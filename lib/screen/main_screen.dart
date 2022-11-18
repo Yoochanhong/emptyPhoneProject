@@ -17,86 +17,102 @@ class MainScreen extends StatelessWidget {
     return _dateTime;
   }
 
-  String getWeek(){
+  String getWeek() {
     DateTime now = DateTime.now();
     String? getDay = Week[DateFormat('E').format(now)];
-    String dateStr = DateFormat(getDay!+ '요일').format(now);
+    String dateStr = DateFormat(getDay! + '요일').format(now);
     return dateStr;
   }
 
   var Week = {
-    'Sun' : '일',
-    'Mon' : '월',
-    'Tue' : '화',
-    'Wed' : '수',
-    'Thu' : '목',
-    'Fri' : '금',
-    'Sat' : '토',
+    'Sun': '일',
+    'Mon': '월',
+    'Tue': '화',
+    'Wed': '수',
+    'Thu': '목',
+    'Fri': '금',
+    'Sat': '토',
   };
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0.0,
-        title: Icon(
-          Icons.lock,
-          color: Colors.black,
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          leading: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Text(
+              'KT',
+              style: TextStyle(
+                fontSize: 12,
+                color: Colors.black,
+              ),
+            ),
+          ),
+          leadingWidth: 50,
+          backgroundColor: Colors.white,
+          elevation: 0.0,
         ),
-        centerTitle: true,
-      ),
-      body: Container(
-        color: Colors.white,
-        child: Stack(
-          children: [
-            Expanded(
-              child: Container(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/wallpaper.jpeg'),
-                    fit: BoxFit.fill,
+        body: Container(
+          color: Colors.white,
+          child: Stack(
+            children: [
+              Expanded(
+                child: Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('assets/wallpaper.jpeg'),
+                      fit: BoxFit.fill,
+                    ),
                   ),
                 ),
               ),
-            ),
-            Positioned(
-              top: 30,
-              left: 122,
-              child: Container(
-                color: Colors.transparent,
-                child: TimerBuilder.periodic(
-                  Duration(seconds: 1),
-                  builder: (context) {
-                    return Text(
-                      getSystemTime(),
-                      style: TextStyle(
-                        fontSize: 65,
-                      ),
-                    );
-                  },
+              Positioned(
+                top: 0,
+                left: 175,
+                child: Container(
+                  color: Colors.transparent,
+                  child: Icon(Icons.lock),
                 ),
               ),
-            ),
-            Positioned(
-              top: 105,
-              left: 133,
-              child: Container(
-                color: Colors.transparent,
-                child: TimerBuilder.periodic(
-                  Duration(seconds: 1),
-                  builder: (context) {
-                    return Text(
-                      getSystemDate() + ' ' +  getWeek(),
-                      style: TextStyle(
-                        fontSize: 16,
-                      ),
-                    );
-                  },
+              Positioned(
+                top: 70,
+                left: 125,
+                child: Container(
+                  color: Colors.transparent,
+                  child: TimerBuilder.periodic(
+                    Duration(seconds: 1),
+                    builder: (context) {
+                      return Text(
+                        getSystemTime(),
+                        style: TextStyle(
+                          fontSize: 60,
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ),
-            ),
-          ],
+              Positioned(
+                top: 135,
+                left: 135,
+                child: Container(
+                  color: Colors.transparent,
+                  child: TimerBuilder.periodic(
+                    Duration(seconds: 1),
+                    builder: (context) {
+                      return Text(
+                        getSystemDate() + ' ' + getWeek(),
+                        style: TextStyle(
+                          fontSize: 16,
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
