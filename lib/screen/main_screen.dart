@@ -38,21 +38,6 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          leading: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Text(
-              'KT',
-              style: TextStyle(
-                fontSize: 12,
-                color: Colors.black,
-              ),
-            ),
-          ),
-          leadingWidth: 50,
-          backgroundColor: Colors.white,
-          elevation: 0.0,
-        ),
         body: Container(
           color: Colors.white,
           child: Stack(
@@ -68,7 +53,35 @@ class MainScreen extends StatelessWidget {
                 ),
               ),
               Positioned(
-                top: 0,
+                top: 6,
+                left: 6,
+                child: Text(
+                  'KT',
+                  style: TextStyle(
+                    fontSize: 12,
+                  ),
+                ),
+              ),
+              Positioned(
+                right: 10,
+                top: 5,
+                child: Row(
+                  children: [
+                    Icon(Icons.bluetooth, size: 15),
+                    SizedBox(width: 3),
+                    Icon(Icons.wifi_tethering, size: 15),
+                    SizedBox(width: 3),
+                    Text('LTE',
+                        style: TextStyle(
+                            fontSize: 11, fontWeight: FontWeight.bold)),
+                    SizedBox(width: 3),
+                    Text('56%', style: TextStyle(fontSize: 12)),
+                    Icon(Icons.battery_4_bar, size: 15),
+                  ],
+                ),
+              ),
+              Positioned(
+                top: 30,
                 left: 175,
                 child: Container(
                   color: Colors.transparent,
@@ -76,7 +89,7 @@ class MainScreen extends StatelessWidget {
                 ),
               ),
               Positioned(
-                top: 70,
+                top: 110,
                 left: 125,
                 child: Container(
                   color: Colors.transparent,
@@ -94,7 +107,7 @@ class MainScreen extends StatelessWidget {
                 ),
               ),
               Positioned(
-                top: 135,
+                top: 175,
                 left: 135,
                 child: Container(
                   color: Colors.transparent,
