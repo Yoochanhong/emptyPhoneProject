@@ -11,6 +11,14 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0.0,
+        title: Icon(
+          Icons.lock,
+          color: Colors.black,
+        ),
+      ),
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
