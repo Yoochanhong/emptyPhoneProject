@@ -69,9 +69,9 @@ class MainScreen extends StatelessWidget {
               child: Row(
                 children: [
                   Icon(Icons.bluetooth, size: 15),
-                  SizedBox(width: 3),
-                  Icon(Icons.wifi_tethering, size: 15),
-                  SizedBox(width: 3),
+                  SizedBox(width: 2),
+                  Icon(Icons.place, size: 15),
+                  SizedBox(width: 2),
                   Text('LTE',
                       style:
                           TextStyle(fontSize: 11, fontWeight: FontWeight.bold)),
