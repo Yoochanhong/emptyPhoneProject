@@ -75,7 +75,9 @@ class MainScreen extends StatelessWidget {
                   Text('LTE',
                       style:
                           TextStyle(fontSize: 11, fontWeight: FontWeight.bold)),
-                  SizedBox(width: 5),
+                  SizedBox(width: 3),
+                  Icon(Icons.signal_cellular_alt, size: 15),
+                  SizedBox(width: 3),
                   Text('56%', style: TextStyle(fontSize: 12)),
                   Icon(Icons.battery_4_bar, size: 15),
                 ],
