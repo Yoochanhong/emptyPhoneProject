@@ -37,8 +37,7 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.top]);
-    SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
+    SystemChrome.setEnabledSystemUIOverlays([]);
     return Scaffold(
       body: Container(
         color: Colors.white,
@@ -66,7 +65,7 @@ class MainScreen extends StatelessWidget {
             ),
             Positioned(
               right: 10,
-              top: 5,
+              top: 10,
               child: Row(
                 children: [
                   Icon(Icons.bluetooth, size: 15),
