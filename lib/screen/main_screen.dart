@@ -43,15 +43,20 @@ class MainScreen extends StatelessWidget {
         color: Colors.white,
         child: Stack(
           children: [
-            Expanded(
-              child: Container(
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/wallpaper.jpeg'),
-                    fit: BoxFit.fill,
+            Flex(
+              direction: Axis.horizontal,
+              children: [
+                Expanded(
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('assets/wallpaper.jpeg'),
+                        fit: BoxFit.fill,
+                      ),
+                    ),
                   ),
                 ),
-              ),
+              ],
             ),
             const Positioned(
               top: 10,
