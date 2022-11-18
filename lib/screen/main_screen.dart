@@ -20,12 +20,12 @@ class MainScreen extends StatelessWidget {
 
   String getWeek() {
     DateTime now = DateTime.now();
-    String? getDay = Week[DateFormat('E').format(now)];
+    String? getDay = week[DateFormat('E').format(now)];
     String dateStr = DateFormat(getDay! + '요일').format(now);
     return dateStr;
   }
 
-  var Week = {
+  var week = {
     'Sun': '일',
     'Mon': '월',
     'Tue': '화',
@@ -45,7 +45,7 @@ class MainScreen extends StatelessWidget {
           children: [
             Expanded(
               child: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage('assets/wallpaper.jpeg'),
                     fit: BoxFit.fill,
@@ -53,7 +53,7 @@ class MainScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Positioned(
+            const Positioned(
               top: 10,
               left: 10,
               child: Text(
@@ -67,7 +67,7 @@ class MainScreen extends StatelessWidget {
               right: 10,
               top: 10,
               child: Row(
-                children: [
+                children: const [
                   Icon(Icons.bluetooth, size: 15),
                   SizedBox(width: 2),
                   Icon(Icons.place, size: 15),
@@ -89,7 +89,7 @@ class MainScreen extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 30),
                   child: Container(
                     color: Colors.transparent,
-                    child: Icon(Icons.lock),
+                    child: const Icon(Icons.lock),
                   ),
                 ),
                 Padding(
@@ -98,11 +98,11 @@ class MainScreen extends StatelessWidget {
                     child: Container(
                       color: Colors.transparent,
                       child: TimerBuilder.periodic(
-                        Duration(seconds: 1),
+                        const Duration(seconds: 1),
                         builder: (context) {
                           return Text(
                             getSystemTime(),
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 60,
                             ),
                           );
@@ -115,11 +115,11 @@ class MainScreen extends StatelessWidget {
                   child: Container(
                     color: Colors.transparent,
                     child: TimerBuilder.periodic(
-                      Duration(seconds: 1),
+                      const Duration(seconds: 1),
                       builder: (context) {
                         return Text(
                           getSystemDate() + ' ' + getWeek(),
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 16,
                           ),
                         );
@@ -144,7 +144,7 @@ class MainScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Positioned(
+            const Positioned(
               bottom: 22,
               left: 27,
               child: Icon(
@@ -167,7 +167,7 @@ class MainScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Positioned(
+            const Positioned(
               bottom: 22,
               right: 27,
               child: Icon(
