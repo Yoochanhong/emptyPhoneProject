@@ -74,7 +74,7 @@ class MainScreen extends StatelessWidget {
                     Text('LTE',
                         style: TextStyle(
                             fontSize: 11, fontWeight: FontWeight.bold)),
-                    SizedBox(width: 3),
+                    SizedBox(width: 5),
                     Text('56%', style: TextStyle(fontSize: 12)),
                     Icon(Icons.battery_4_bar, size: 15),
                   ],
@@ -122,6 +122,52 @@ class MainScreen extends StatelessWidget {
                       );
                     },
                   ),
+                ),
+              ),
+              Positioned(
+                bottom: 15,
+                left: 20,
+                child: Opacity(
+                  opacity: 0.4,
+                  child: Container(
+                    width: 40,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                bottom: 22,
+                left: 27,
+                child: Icon(
+                  Icons.call,
+                  color: Colors.white,
+                ),
+              ),
+              Positioned(
+                bottom: 15,
+                right: 20,
+                child: Opacity(
+                  opacity: 0.4,
+                  child: Container(
+                    width: 40,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                bottom: 22,
+                right: 27,
+                child: Icon(
+                  Icons.camera_alt_sharp,
+                  color: Colors.white,
                 ),
               ),
             ],
