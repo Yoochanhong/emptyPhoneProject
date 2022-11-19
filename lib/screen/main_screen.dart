@@ -44,9 +44,21 @@ class MainScreen extends StatelessWidget {
     'std': Icons.battery_std,
   };
 
+  Map batteryPercentState = {
+    Icons.battery_2_bar : '34%',
+    Icons.battery_4_bar : '56%',
+    Icons.battery_5_bar : '68%',
+    Icons.battery_std : '98%',
+  };
+
   dynamic batteryStateInfo() {
     dynamic batteryState = battery[radioStateInfo.battery];
     return batteryState;
+  }
+
+  dynamic batteryPercentInfo() {
+    dynamic batteryPercent = batteryPercentState[batteryStateInfo()];
+    return batteryPercent;
   }
 
   @override
@@ -77,7 +89,7 @@ class MainScreen extends StatelessWidget {
               left: 10,
               child: Text(
                 radioStateInfo.company,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 12,
                 ),
               ),
@@ -87,17 +99,17 @@ class MainScreen extends StatelessWidget {
               top: 10,
               child: Row(
                 children: [
-                  Icon(Icons.bluetooth, size: 15),
-                  SizedBox(width: 2),
-                  Icon(Icons.place, size: 15),
-                  SizedBox(width: 2),
-                  Text('LTE',
+                  const Icon(Icons.bluetooth, size: 15),
+                  const SizedBox(width: 2),
+                  const Icon(Icons.place, size: 15),
+                  const SizedBox(width: 2),
+                  const Text('LTE',
                       style:
                           TextStyle(fontSize: 11, fontWeight: FontWeight.bold)),
-                  SizedBox(width: 3),
-                  Icon(Icons.signal_cellular_alt, size: 15),
-                  SizedBox(width: 3),
-                  Text('56%', style: TextStyle(fontSize: 12)),
+                  const SizedBox(width: 3),
+                  const Icon(Icons.signal_cellular_alt, size: 15),
+                  const SizedBox(width: 3),
+                  Text(batteryPercentInfo(), style: TextStyle(fontSize: 12)),
                   Icon(batteryStateInfo(), size: 15),
                 ],
               ),
