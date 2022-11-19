@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:timer_builder/timer_builder.dart';
 
 class MainScreen extends StatelessWidget {
-  MainScreen({Key? key}) : super(key: key);
+  MainScreen({Key? key}) : super(key : key);
 
   String getSystemTime() {
     DateFormat dateFormat = DateFormat("h:mm");

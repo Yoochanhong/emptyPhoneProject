@@ -1,10 +1,6 @@
 import 'package:empty_phone_project/screen/main_screen.dart';
 import 'package:flutter/material.dart';
 
-enum Battery { low, middle, high, full }
-
-enum Company { KT, SKT, LG }
-
 class StartSettingScreen extends StatefulWidget {
   const StartSettingScreen({Key? key}) : super(key: key);
 
@@ -13,9 +9,8 @@ class StartSettingScreen extends StatefulWidget {
 }
 
 class _StartSettingScreenState extends State<StartSettingScreen> {
-  Battery? battery = Battery.low;
-  Company? company = Company.KT;
-
+  int battery = 2;
+  String company = 'KT';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,12 +28,12 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
               Column(
                 children: [
                   const Icon(Icons.battery_2_bar),
-                  Radio<Battery>(
-                      value: Battery.low,
+                  Radio(
+                      value: 2,
                       groupValue: battery,
-                      onChanged: (Battery? value) {
+                      onChanged: (value) {
                         setState(() {
-                          battery = value;
+                          battery = value!;
                         });
                       }),
                 ],
@@ -46,12 +41,12 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
               Column(
                 children: [
                   const Icon(Icons.battery_4_bar),
-                  Radio<Battery>(
-                      value: Battery.middle,
+                  Radio(
+                      value: 4,
                       groupValue: battery,
-                      onChanged: (Battery? value) {
+                      onChanged: (value) {
                         setState(() {
-                          battery = value;
+                          battery = value!;
                         });
                       }),
                 ],
@@ -59,12 +54,12 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
               Column(
                 children: [
                   const Icon(Icons.battery_5_bar),
-                  Radio<Battery>(
-                      value: Battery.high,
+                  Radio(
+                      value: 5,
                       groupValue: battery,
-                      onChanged: (Battery? value) {
+                      onChanged: (value) {
                         setState(() {
-                          battery = value;
+                          battery = value!;
                         });
                       }),
                 ],
@@ -72,12 +67,12 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
               Column(
                 children: [
                   const Icon(Icons.battery_std),
-                  Radio<Battery>(
-                      value: Battery.full,
+                  Radio(
+                      value: 8,
                       groupValue: battery,
-                      onChanged: (Battery? value) {
+                      onChanged: (value) {
                         setState(() {
-                          battery = value;
+                          battery = value!;
                         });
                       }),
                 ],
@@ -91,12 +86,12 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
               Column(
                 children: [
                   Text('KT'),
-                  Radio<Company>(
-                      value: Company.KT,
+                  Radio(
+                      value: 'KT',
                       groupValue: company,
-                      onChanged: (Company? value) {
+                      onChanged: (value) {
                         setState(() {
-                          company = value;
+                          company = value!;
                         });
                       }),
                 ],
@@ -104,12 +99,12 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
               Column(
                 children: [
                   Text('SKT'),
-                  Radio<Company>(
-                      value: Company.SKT,
+                  Radio(
+                      value: 'SKT',
                       groupValue: company,
-                      onChanged: (Company? value) {
+                      onChanged: (value) {
                         setState(() {
-                          company = value;
+                          company = value!;
                         });
                       }),
                 ],
@@ -117,12 +112,12 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
               Column(
                 children: [
                   Text('LGU+'),
-                  Radio<Company>(
-                      value: Company.LG,
+                  Radio(
+                      value: 'LGU+',
                       groupValue: company,
-                      onChanged: (Company? value) {
+                      onChanged: (value) {
                         setState(() {
-                          company = value;
+                          company = value!;
                         });
                       }),
                 ],
