@@ -1,5 +1,6 @@
 import 'package:empty_phone_project/screen/main_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:empty_phone_project/model/radio_state_info.dart';
 
 class StartSettingScreen extends StatefulWidget {
   const StartSettingScreen({Key? key}) : super(key: key);
@@ -9,8 +10,8 @@ class StartSettingScreen extends StatefulWidget {
 }
 
 class _StartSettingScreenState extends State<StartSettingScreen> {
-  int battery = 2;
-  String company = 'KT';
+  RadioStateInfo radioStateInfo = RadioStateInfo(battery: 2, company: 'KT');
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,10 +31,10 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
                   const Icon(Icons.battery_2_bar),
                   Radio(
                       value: 2,
-                      groupValue: battery,
+                      groupValue: radioStateInfo.battery,
                       onChanged: (value) {
                         setState(() {
-                          battery = value!;
+                          radioStateInfo.battery = value!;
                         });
                       }),
                 ],
@@ -43,10 +44,10 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
                   const Icon(Icons.battery_4_bar),
                   Radio(
                       value: 4,
-                      groupValue: battery,
+                      groupValue: radioStateInfo.battery,
                       onChanged: (value) {
                         setState(() {
-                          battery = value!;
+                          radioStateInfo.battery = value!;
                         });
                       }),
                 ],
@@ -56,10 +57,10 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
                   const Icon(Icons.battery_5_bar),
                   Radio(
                       value: 5,
-                      groupValue: battery,
+                      groupValue: radioStateInfo.battery,
                       onChanged: (value) {
                         setState(() {
-                          battery = value!;
+                          radioStateInfo.battery = value!;
                         });
                       }),
                 ],
@@ -69,10 +70,10 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
                   const Icon(Icons.battery_std),
                   Radio(
                       value: 8,
-                      groupValue: battery,
+                      groupValue: radioStateInfo.battery,
                       onChanged: (value) {
                         setState(() {
-                          battery = value!;
+                          radioStateInfo.battery = value!;
                         });
                       }),
                 ],
@@ -88,10 +89,10 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
                   Text('KT'),
                   Radio(
                       value: 'KT',
-                      groupValue: company,
+                      groupValue: radioStateInfo.company,
                       onChanged: (value) {
                         setState(() {
-                          company = value!;
+                          radioStateInfo.company = value!;
                         });
                       }),
                 ],
@@ -101,10 +102,10 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
                   Text('SKT'),
                   Radio(
                       value: 'SKT',
-                      groupValue: company,
+                      groupValue: radioStateInfo.company,
                       onChanged: (value) {
                         setState(() {
-                          company = value!;
+                          radioStateInfo.company = value!;
                         });
                       }),
                 ],
@@ -114,10 +115,10 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
                   Text('LGU+'),
                   Radio(
                       value: 'LGU+',
-                      groupValue: company,
+                      groupValue: radioStateInfo.company,
                       onChanged: (value) {
                         setState(() {
-                          company = value!;
+                          radioStateInfo.company = value!;
                         });
                       }),
                 ],
@@ -138,7 +139,9 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => MainScreen(),
+                    builder: (context) => MainScreen(
+                      radioStateInfo: radioStateInfo,
+                    ),
                   ),
                 );
               },

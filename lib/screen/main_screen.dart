@@ -1,10 +1,13 @@
+import 'package:empty_phone_project/model/radio_state_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:timer_builder/timer_builder.dart';
+import 'package:empty_phone_project/model/radio_state_info.dart';
 
 class MainScreen extends StatelessWidget {
-  MainScreen({Key? key}) : super(key : key);
+  MainScreen({Key? key, required this.radioStateInfo}) : super(key : key);
+  final RadioStateInfo radioStateInfo;
 
   String getSystemTime() {
     DateFormat dateFormat = DateFormat("h:mm");
@@ -58,11 +61,11 @@ class MainScreen extends StatelessWidget {
                 ),
               ],
             ),
-            const Positioned(
+            Positioned(
               top: 10,
               left: 10,
               child: Text(
-                'KT',
+                radioStateInfo!.company,
                 style: TextStyle(
                   fontSize: 12,
                 ),
@@ -72,7 +75,7 @@ class MainScreen extends StatelessWidget {
               right: 10,
               top: 10,
               child: Row(
-                children: const [
+                children: [
                   Icon(Icons.bluetooth, size: 15),
                   SizedBox(width: 2),
                   Icon(Icons.place, size: 15),
