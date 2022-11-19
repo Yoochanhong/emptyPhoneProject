@@ -3,13 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:timer_builder/timer_builder.dart';
-import 'package:empty_phone_project/model/radio_state_info.dart';
 
 class MainScreen extends StatelessWidget {
-  MainScreen({Key? key, required this.radioStateInfo}) : super(key : key);
+  MainScreen({Key? key, required this.radioStateInfo}) : super(key: key);
   final RadioStateInfo radioStateInfo;
-
-
 
   String getSystemTime() {
     DateFormat dateFormat = DateFormat("h:mm");
@@ -40,6 +37,18 @@ class MainScreen extends StatelessWidget {
     'Sat': '토',
   };
 
+  Map battery = {
+    '2': Icons.battery_2_bar,
+    '4': Icons.battery_4_bar,
+    '5': Icons.battery_5_bar,
+    'std': Icons.battery_std,
+  };
+
+  dynamic batteryStateInfo() {
+    dynamic batteryState = battery[radioStateInfo.battery];
+    return batteryState;
+  }
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIOverlays([]);
@@ -67,7 +76,7 @@ class MainScreen extends StatelessWidget {
               top: 10,
               left: 10,
               child: Text(
-                radioStateInfo!.company,
+                radioStateInfo.company,
                 style: TextStyle(
                   fontSize: 12,
                 ),
@@ -89,7 +98,7 @@ class MainScreen extends StatelessWidget {
                   Icon(Icons.signal_cellular_alt, size: 15),
                   SizedBox(width: 3),
                   Text('56%', style: TextStyle(fontSize: 12)),
-                  Icon(Icons.battery_4_bar, size: 15),
+                  Icon(batteryStateInfo(), size: 15),
                 ],
               ),
             ),
