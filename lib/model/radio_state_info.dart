@@ -1,5 +1,5 @@
 class RadioStateInfo{
-  int battery;
+  String battery;
   String company;
   RadioStateInfo({required this.battery, required this.company});
 }

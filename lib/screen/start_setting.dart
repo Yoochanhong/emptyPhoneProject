@@ -10,7 +10,7 @@ class StartSettingScreen extends StatefulWidget {
 }
 
 class _StartSettingScreenState extends State<StartSettingScreen> {
-  RadioStateInfo radioStateInfo = RadioStateInfo(battery: 2, company: 'KT');
+  RadioStateInfo radioStateInfo = RadioStateInfo(battery: '2', company: 'KT');
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
                 children: [
                   const Icon(Icons.battery_2_bar),
                   Radio(
-                      value: 2,
+                      value: '2',
                       groupValue: radioStateInfo.battery,
                       onChanged: (value) {
                         setState(() {
@@ -43,7 +43,7 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
                 children: [
                   const Icon(Icons.battery_4_bar),
                   Radio(
-                      value: 4,
+                      value: '4',
                       groupValue: radioStateInfo.battery,
                       onChanged: (value) {
                         setState(() {
@@ -56,7 +56,7 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
                 children: [
                   const Icon(Icons.battery_5_bar),
                   Radio(
-                      value: 5,
+                      value: '5',
                       groupValue: radioStateInfo.battery,
                       onChanged: (value) {
                         setState(() {
@@ -69,7 +69,7 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
                 children: [
                   const Icon(Icons.battery_std),
                   Radio(
-                      value: 8,
+                      value: 'std',
                       groupValue: radioStateInfo.battery,
                       onChanged: (value) {
                         setState(() {
