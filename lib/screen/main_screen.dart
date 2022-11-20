@@ -77,10 +77,7 @@ class MainScreen extends StatelessWidget {
                 Container(
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height,
-                  child: Image.file(
-                    File(imageFile!.path),
-                    fit: BoxFit.fill,
-                  ),
+                  child: Image.file(File(imageFile!.path)),
                 ),
                 Positioned(
                   top: 10,
