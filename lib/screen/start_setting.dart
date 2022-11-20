@@ -130,6 +130,7 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
             ],
           ),
           SizedBox(height: 30),
+          Text('배경화면에 맞는 비율의 사진을 권장해요!'),
           SizedBox(
             width: MediaQuery.of(context).size.width - 200,
             child: ElevatedButton(
