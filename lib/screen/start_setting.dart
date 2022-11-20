@@ -1,6 +1,8 @@
 import 'package:empty_phone_project/screen/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:empty_phone_project/model/radio_state_info.dart';
+import 'dart:io';
+import 'package:image_picker/image_picker.dart';
 
 class StartSettingScreen extends StatefulWidget {
   const StartSettingScreen({Key? key}) : super(key: key);
@@ -11,6 +13,15 @@ class StartSettingScreen extends StatefulWidget {
 
 class _StartSettingScreenState extends State<StartSettingScreen> {
   RadioStateInfo radioStateInfo = RadioStateInfo(battery: '2', company: 'KT');
+  File? image;
+  final picker = ImagePicker();
+
+  Future getGalleryImage(ImageSource imageSource) async {
+    final pickedFile = await picker.getImage(source: imageSource);
+    setState(() {
+      image = File(pickedFile!.path);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -126,6 +137,7 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
             ],
           ),
           SizedBox(height: 30),
+          
           SizedBox(
             width: MediaQuery.of(context).size.width - 100,
             child: ElevatedButton(
