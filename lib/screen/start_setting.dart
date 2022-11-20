@@ -1,7 +1,7 @@
+import 'dart:io';
+import 'package:empty_phone_project/model/radio_state_info.dart';
 import 'package:empty_phone_project/screen/main_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:empty_phone_project/model/radio_state_info.dart';
-import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 
 class StartSettingScreen extends StatefulWidget {
@@ -15,13 +15,6 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
   RadioStateInfo radioStateInfo = RadioStateInfo(battery: '2', company: 'KT');
   File? image;
   final picker = ImagePicker();
-
-  Future getGalleryImage(ImageSource imageSource) async {
-    final pickedFile = await picker.getImage(source: imageSource);
-    setState(() {
-      image = File(pickedFile!.path);
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -137,7 +130,22 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
             ],
           ),
           SizedBox(height: 30),
-          
+          SizedBox(
+            width: MediaQuery.of(context).size.width - 200,
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.blue,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+              onPressed: () {
+                getGalleryImage(ImageSource.gallery);
+              },
+              child: Text('이미지 가져오기'),
+            ),
+          ),
+          SizedBox(height: 30),
           SizedBox(
             width: MediaQuery.of(context).size.width - 100,
             child: ElevatedButton(
@@ -153,6 +161,7 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
                   MaterialPageRoute(
                     builder: (context) => MainScreen(
                       radioStateInfo: radioStateInfo,
+                      imageFile: image!,
                     ),
                   ),
                 );
@@ -163,5 +172,13 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
         ],
       ),
     );
+  }
+
+  Future getGalleryImage(ImageSource imageSource) async {
+    final pickedFile = await picker.getImage(source: imageSource);
+    setState(() {
+      image = File(pickedFile!.path);
+    });
+    print('-------------------' + image!.path);
   }
 }
