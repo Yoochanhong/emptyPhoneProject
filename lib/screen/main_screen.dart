@@ -74,11 +74,21 @@ class MainScreen extends StatelessWidget {
           children: [
             Stack(
               children: [
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height,
-                  child: Image.file(File(imageFile!.path)),
-                ),
+                if (imageFile == null)
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height,
+                    child: Image.asset(
+                      'assets/wallpaper.jpeg',
+                      fit: BoxFit.fill,
+                    ),
+                  )
+                else
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height,
+                    child: Image.file(File(imageFile!.path)),
+                  ),
                 Positioned(
                   top: 10,
                   left: 10,

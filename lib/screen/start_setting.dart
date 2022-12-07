@@ -130,7 +130,7 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
             ],
           ),
           SizedBox(height: 30),
-          Text('배경화면에 맞는 비율의 사진을 권장해요!'),
+          Text('배경화면에 맞는 비율의 사진을 권장해요!(선택사항)'),
           SizedBox(
             width: MediaQuery.of(context).size.width - 200,
             child: ElevatedButton(
@@ -143,7 +143,7 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
               onPressed: () {
                 getGalleryImage(ImageSource.gallery);
               },
-              child: Text('이미지 가져오기'),
+              child: Text('이미지 선택하기'),
             ),
           ),
           SizedBox(height: 30),
@@ -162,7 +162,7 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
                   MaterialPageRoute(
                     builder: (context) => MainScreen(
                       radioStateInfo: radioStateInfo,
-                      imageFile: image!,
+                      imageFile: image,
                     ),
                   ),
                 );
