@@ -26,7 +26,7 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
       backgroundColor: Colors.white,
       body: Column(
         children: [
-          SizedBox(height: 100),
+          const SizedBox(height: 100),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -84,7 +84,7 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
               ),
             ],
           ),
-          SizedBox(height: 30),
+          const SizedBox(height: 30),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -93,13 +93,12 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
               companyRadioButton('LGU+'),
             ],
           ),
-          SizedBox(height: 30),
-          Text('배경화면에 맞는 비율의 사진을 권장해요!(선택사항)'),
+          const SizedBox(height: 30),
           SizedBox(
             width: MediaQuery.of(context).size.width - 200,
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                primary: Colors.blue,
+                backgroundColor: Colors.blue,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
@@ -107,15 +106,15 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
               onPressed: () {
                 getGalleryImage(ImageSource.gallery);
               },
-              child: Text('이미지 선택하기'),
+              child: const Text('이미지 선택하기'),
             ),
           ),
-          SizedBox(height: 30),
+          const SizedBox(height: 30),
           SizedBox(
             width: MediaQuery.of(context).size.width - 100,
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                primary: Colors.black,
+                backgroundColor: Colors.black,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(50),
                 ),
@@ -131,7 +130,7 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
                   ),
                 );
               },
-              child: Text('Next'),
+              child: const Text('Next'),
             ),
           ),
         ],
@@ -144,7 +143,6 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
     setState(() {
       image = File(pickedFile!.path);
     });
-    print('-------------------' + image!.path);
   }
 
   Widget companyRadioButton(String text) {
