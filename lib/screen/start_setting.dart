@@ -88,45 +88,9 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Column(
-                children: [
-                  Text('KT'),
-                  Radio(
-                      value: 'KT',
-                      groupValue: radioStateInfo.company,
-                      onChanged: (value) {
-                        setState(() {
-                          radioStateInfo.company = value!;
-                        });
-                      }),
-                ],
-              ),
-              Column(
-                children: [
-                  Text('SKT'),
-                  Radio(
-                      value: 'SKT',
-                      groupValue: radioStateInfo.company,
-                      onChanged: (value) {
-                        setState(() {
-                          radioStateInfo.company = value!;
-                        });
-                      }),
-                ],
-              ),
-              Column(
-                children: [
-                  Text('LGU+'),
-                  Radio(
-                      value: 'LGU+',
-                      groupValue: radioStateInfo.company,
-                      onChanged: (value) {
-                        setState(() {
-                          radioStateInfo.company = value!;
-                        });
-                      }),
-                ],
-              ),
+              companyRadioButton('KT'),
+              companyRadioButton('SKT'),
+              companyRadioButton('LGU+'),
             ],
           ),
           SizedBox(height: 30),
@@ -181,5 +145,22 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
       image = File(pickedFile!.path);
     });
     print('-------------------' + image!.path);
+  }
+
+  Widget companyRadioButton(String text) {
+    return Column(
+      children: [
+        Text(text.toString()),
+        Radio(
+          value: text.toString(),
+          groupValue: radioStateInfo.company,
+          onChanged: (value) {
+            setState(() {
+              radioStateInfo.company = value!;
+            });
+          },
+        ),
+      ],
+    );
   }
 }
