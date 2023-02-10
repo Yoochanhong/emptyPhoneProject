@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:empty_phone_project/model/radio_state_info.dart';
 import 'package:empty_phone_project/screen/main_screen.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:dotted_border/dotted_border.dart';
@@ -111,10 +110,10 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
                 },
                 child: DottedBorder(
                   borderType: BorderType.RRect,
-                  radius: Radius.circular(12),
+                  radius: const Radius.circular(12),
                   child: ClipRRect(
                     child: _pickedFile == null
-                        ? SizedBox(
+                        ? const SizedBox(
                             height: 200,
                             width: 120,
                           )
@@ -133,12 +132,12 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
                 ),
               ),
               _pickedFile == null
-                  ? SizedBox.shrink()
+                  ? const SizedBox.shrink()
                   : ElevatedButton(
                       onPressed: () {
                         _cropImage();
                       },
-                      child: Icon(Icons.crop),
+                      child: const Icon(Icons.crop),
                     ),
             ],
           ),
