@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:empty_phone_project/model/radio_state_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:timer_builder/timer_builder.dart';
 
@@ -10,7 +11,7 @@ class MainScreen extends StatelessWidget {
   MainScreen({Key? key, required this.radioStateInfo, this.imageFile})
       : super(key: key);
   final RadioStateInfo radioStateInfo;
-  File? imageFile;
+  XFile? imageFile;
 
   String getSystemTime() {
     DateFormat dateFormat = DateFormat("h:mm");

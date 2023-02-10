@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:empty_phone_project/model/radio_state_info.dart';
 import 'package:empty_phone_project/screen/main_screen.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -13,8 +14,7 @@ class StartSettingScreen extends StatefulWidget {
 
 class _StartSettingScreenState extends State<StartSettingScreen> {
   RadioStateInfo radioStateInfo = RadioStateInfo(battery: '2', company: 'KT');
-  File? image;
-  final picker = ImagePicker();
+  XFile? _pickedFile;
 
   @override
   Widget build(BuildContext context) {
@@ -96,6 +96,7 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
           const SizedBox(height: 30),
           SizedBox(
             width: MediaQuery.of(context).size.width - 200,
+            height: MediaQuery.of(context).size.height - 550,
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.blue,
@@ -104,9 +105,19 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
                 ),
               ),
               onPressed: () {
-                getGalleryImage(ImageSource.gallery);
+                _getGalleryImage();
               },
-              child: const Text('이미지 선택하기'),
+              child: _pickedFile == null
+                  ? const Text('이미지 선택하기')
+                  : Container(
+                      width: MediaQuery.of(context).size.width - 200,
+                      height: MediaQuery.of(context).size.height - 550,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: FileImage(File(_pickedFile!.path)),
+                            fit: BoxFit.cover),
+                      ),
+                    ),
             ),
           ),
           const SizedBox(height: 30),
@@ -125,7 +136,7 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
                   MaterialPageRoute(
                     builder: (context) => MainScreen(
                       radioStateInfo: radioStateInfo,
-                      imageFile: image,
+                      imageFile: _pickedFile,
                     ),
                   ),
                 );
@@ -138,11 +149,18 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
     );
   }
 
-  Future getGalleryImage(ImageSource imageSource) async {
-    final pickedFile = await picker.getImage(source: imageSource);
-    setState(() {
-      image = File(pickedFile!.path);
-    });
+  _getGalleryImage() async {
+    final pickedFile =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (pickedFile != null) {
+      setState(() {
+        _pickedFile = _pickedFile;
+      });
+    } else {
+      if (kDebugMode) {
+        print('이미지 선택안함');
+      }
+    }
   }
 
   Widget companyRadioButton(String text) {
