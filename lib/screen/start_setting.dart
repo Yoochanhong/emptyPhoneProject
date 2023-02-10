@@ -94,39 +94,49 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
             ],
           ),
           const SizedBox(height: 30),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.transparent,
-              elevation: 0.0,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
+          Column(
+            children: [
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.transparent,
+                  elevation: 0.0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                onPressed: () {
+                  _getGalleryImage();
+                },
+                child: DottedBorder(
+                  borderType: BorderType.RRect,
+                  radius: Radius.circular(12),
+                  child: ClipRRect(
+                    child: _pickedFile == null
+                        ? SizedBox(
+                            height: 200,
+                            width: 120,
+                          )
+                        : Container(
+                            width: MediaQuery.of(context).size.width - 200,
+                            height: MediaQuery.of(context).size.height - 500,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: FileImage(
+                                    File(_pickedFile!.path),
+                                  ),
+                                  fit: BoxFit.cover),
+                            ),
+                          ),
+                  ),
+                ),
               ),
-            ),
-            onPressed: () {
-              _getGalleryImage();
-            },
-            child: DottedBorder(
-              borderType: BorderType.RRect,
-              radius: Radius.circular(12),
-              child: ClipRRect(
-                child: _pickedFile == null
-                    ? SizedBox(
-                        height: 200,
-                        width: 120,
-                      )
-                    : Container(
-                        width: MediaQuery.of(context).size.width - 200,
-                        height: MediaQuery.of(context).size.height - 500,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: FileImage(
-                                File(_pickedFile!.path),
-                              ),
-                              fit: BoxFit.cover),
-                        ),
-                      ),
-              ),
-            ),
+              _pickedFile == null
+                  ? SizedBox.shrink()
+                  : ElevatedButton(
+                      onPressed: () {},
+                      child: Icon(Icons.crop),
+                    ),
+            ],
           ),
           const SizedBox(height: 30),
           SizedBox(
