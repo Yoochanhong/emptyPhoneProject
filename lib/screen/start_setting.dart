@@ -110,11 +110,11 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
               child: _pickedFile == null
                   ? const Text('이미지 선택하기')
                   : Container(
-                      width: MediaQuery.of(context).size.width - 200,
-                      height: MediaQuery.of(context).size.height - 550,
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                            image: FileImage(File(_pickedFile!.path)),
+                            image: FileImage(
+                              File(_pickedFile!.path),
+                            ),
                             fit: BoxFit.cover),
                       ),
                     ),
@@ -149,17 +149,13 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
     );
   }
 
-  _getGalleryImage() async {
+  Future<void> _getGalleryImage() async {
     final pickedFile =
         await ImagePicker().pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
       setState(() {
-        _pickedFile = _pickedFile;
+        _pickedFile = pickedFile;
       });
-    } else {
-      if (kDebugMode) {
-        print('이미지 선택안함');
-      }
     }
   }
 
