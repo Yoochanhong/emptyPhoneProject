@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:dotted_border/dotted_border.dart';
+import 'package:image_cropper/image_cropper.dart';
 
 class StartSettingScreen extends StatefulWidget {
   const StartSettingScreen({Key? key}) : super(key: key);
@@ -16,6 +17,7 @@ class StartSettingScreen extends StatefulWidget {
 class _StartSettingScreenState extends State<StartSettingScreen> {
   RadioStateInfo radioStateInfo = RadioStateInfo(battery: '2', company: 'KT');
   XFile? _pickedFile;
+  CroppedFile? _croppedFile;
 
   @override
   Widget build(BuildContext context) {
@@ -133,7 +135,9 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
               _pickedFile == null
                   ? SizedBox.shrink()
                   : ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        _cropImage();
+                      },
                       child: Icon(Icons.crop),
                     ),
             ],
@@ -192,5 +196,44 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
         ),
       ],
     );
+  }
+
+  Future<void> _cropImage() async {
+    if (_pickedFile != null) {
+      final croppedFile = await ImageCropper().cropImage(
+        sourcePath: _pickedFile!.path,
+        compressFormat: ImageCompressFormat.jpg,
+        compressQuality: 100,
+        uiSettings: [
+          AndroidUiSettings(
+              toolbarTitle: 'Cropper',
+              toolbarColor: Colors.deepOrange,
+              toolbarWidgetColor: Colors.white,
+              initAspectRatio: CropAspectRatioPreset.original,
+              lockAspectRatio: false),
+          IOSUiSettings(
+            title: 'Cropper',
+          ),
+          WebUiSettings(
+            context: context,
+            presentStyle: CropperPresentStyle.dialog,
+            boundary: const CroppieBoundary(
+              width: 520,
+              height: 520,
+            ),
+            viewPort:
+                const CroppieViewPort(width: 480, height: 480, type: 'circle'),
+            enableExif: true,
+            enableZoom: true,
+            showZoomer: true,
+          ),
+        ],
+      );
+      if (croppedFile != null) {
+        setState(() {
+          _croppedFile = croppedFile;
+        });
+      }
+    }
   }
 }
