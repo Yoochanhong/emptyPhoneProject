@@ -1,5 +1,5 @@
-class RadioStateInfo{
-  String battery;
+class RadioStateInfo {
   String company;
-  RadioStateInfo({required this.battery, required this.company});
+
+  RadioStateInfo({required this.company});
 }
