@@ -7,12 +7,17 @@ import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:timer_builder/timer_builder.dart';
 
-class MainScreen extends StatelessWidget {
+class MainScreen extends StatefulWidget {
   MainScreen({Key? key, required this.radioStateInfo, this.imageFile})
       : super(key: key);
   final RadioStateInfo radioStateInfo;
   XFile? imageFile;
 
+  @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
   String getSystemTime() {
     DateFormat dateFormat = DateFormat("h:mm");
     String dateTime = dateFormat.format(DateTime.now());
@@ -56,15 +61,15 @@ class MainScreen extends StatelessWidget {
     Icons.battery_std: '98%',
   };
 
-  dynamic batteryStateInfo() {
-    dynamic batteryState = battery[radioStateInfo.battery];
-    return batteryState;
-  }
+  // dynamic batteryStateInfo() {
+  //   dynamic batteryState = battery[widget.radioStateInfo.battery];
+  //   return batteryState;
+  // }
 
-  dynamic batteryPercentInfo() {
-    dynamic batteryPercent = batteryPercentState[batteryStateInfo()];
-    return batteryPercent;
-  }
+  // dynamic batteryPercentInfo() {
+  //   dynamic batteryPercent = batteryPercentState[batteryStateInfo()];
+  //   return batteryPercent;
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +79,7 @@ class MainScreen extends StatelessWidget {
         children: [
           Stack(
             children: [
-              imageFile == null
+              widget.imageFile == null
                   ? SizedBox(
                       width: MediaQuery.of(context).size.width,
                       height: MediaQuery.of(context).size.height,
@@ -86,14 +91,14 @@ class MainScreen extends StatelessWidget {
                   : SizedBox(
                       width: MediaQuery.of(context).size.width,
                       height: MediaQuery.of(context).size.height,
-                      child:
-                          Image.file(File(imageFile!.path), fit: BoxFit.fill),
+                      child: Image.file(File(widget.imageFile!.path),
+                          fit: BoxFit.fill),
                     ),
               Positioned(
                 top: 10,
                 left: 10,
                 child: Text(
-                  radioStateInfo.company,
+                  widget.radioStateInfo.company,
                   style: const TextStyle(
                     fontSize: 12,
                   ),
@@ -114,9 +119,9 @@ class MainScreen extends StatelessWidget {
                     const SizedBox(width: 3),
                     const Icon(Icons.signal_cellular_alt, size: 15),
                     const SizedBox(width: 3),
-                    Text(batteryPercentInfo(),
-                        style: const TextStyle(fontSize: 12)),
-                    Icon(batteryStateInfo(), size: 15),
+                    //Text(batteryPercentInfo(),
+                        //style: const TextStyle(fontSize: 12)),
+                    //Icon(batteryStateInfo(), size: 15),
                   ],
                 ),
               ),

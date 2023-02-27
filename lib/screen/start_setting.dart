@@ -14,7 +14,7 @@ class StartSettingScreen extends StatefulWidget {
 }
 
 class _StartSettingScreenState extends State<StartSettingScreen> {
-  RadioStateInfo radioStateInfo = RadioStateInfo(battery: '2', company: 'KT');
+  RadioStateInfo radioStateInfo = RadioStateInfo(company: 'KT');
   XFile? _pickedFile;
   CroppedFile? _croppedFile;
 
@@ -28,63 +28,6 @@ class _StartSettingScreenState extends State<StartSettingScreen> {
       backgroundColor: Colors.white,
       body: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Column(
-                children: [
-                  const Icon(Icons.battery_2_bar),
-                  Radio(
-                      value: '2',
-                      groupValue: radioStateInfo.battery,
-                      onChanged: (value) {
-                        setState(() {
-                          radioStateInfo.battery = value!;
-                        });
-                      }),
-                ],
-              ),
-              Column(
-                children: [
-                  const Icon(Icons.battery_4_bar),
-                  Radio(
-                      value: '4',
-                      groupValue: radioStateInfo.battery,
-                      onChanged: (value) {
-                        setState(() {
-                          radioStateInfo.battery = value!;
-                        });
-                      }),
-                ],
-              ),
-              Column(
-                children: [
-                  const Icon(Icons.battery_5_bar),
-                  Radio(
-                      value: '5',
-                      groupValue: radioStateInfo.battery,
-                      onChanged: (value) {
-                        setState(() {
-                          radioStateInfo.battery = value!;
-                        });
-                      }),
-                ],
-              ),
-              Column(
-                children: [
-                  const Icon(Icons.battery_std),
-                  Radio(
-                      value: 'std',
-                      groupValue: radioStateInfo.battery,
-                      onChanged: (value) {
-                        setState(() {
-                          radioStateInfo.battery = value!;
-                        });
-                      }),
-                ],
-              ),
-            ],
-          ),
           const SizedBox(height: 30),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
