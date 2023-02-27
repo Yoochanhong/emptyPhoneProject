@@ -51,30 +51,7 @@ class _MainScreenState extends State<MainScreen> {
     'Sat': '토',
   };
 
-  // Map battery = {
-  //   '2': Icons.battery_2_bar,
-  //   '4': Icons.battery_4_bar,
-  //   '5': Icons.battery_5_bar,
-  //   'std': Icons.battery_std,
-  // };
-
-  // Map batteryPercentState = {
-  //   Icons.battery_2_bar: '34%',
-  //   Icons.battery_4_bar: '56%',
-  //   Icons.battery_5_bar: '68%',
-  //   Icons.battery_std: '98%',
-  // };
-
-  // dynamic batteryStateInfo() {
-  //   dynamic batteryState = battery[widget.radioStateInfo.battery];
-  //   return batteryState;
-  // }
-
-  // dynamic batteryPercentInfo() {
-  //   dynamic batteryPercent = batteryPercentState[batteryStateInfo()];
-  //   return batteryPercent;
-  // }
-
+  @override
   void initState() {
     super.initState();
     batteryLevel = getBatteryLevel();
@@ -137,7 +114,7 @@ class _MainScreenState extends State<MainScreen> {
                           const SizedBox(width: 3),
                           const Icon(Icons.signal_cellular_alt, size: 15),
                           const SizedBox(width: 3),
-                          Text(snapshot.data.toString()),
+                          Text('${snapshot.data}%'),
                           //style: const TextStyle(fontSize: 12)),
                           //Icon(batteryStateInfo(), size: 15),
                         ],
@@ -238,7 +215,7 @@ class _MainScreenState extends State<MainScreen> {
               ],
             );
           } else {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           }
